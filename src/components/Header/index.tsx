@@ -7,7 +7,7 @@ export function Header() {
         <img src="/images/logo.svg" alt="ig.news" />
 
         <nav>
-          <a href="">Home</a>
+          <a className={styles.active} href="">Home</a>
           <a href="">Posts</a>
         </nav>
       </div>
