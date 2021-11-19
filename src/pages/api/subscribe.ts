@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { getSession } from 'next-auth/client'
+import { getSession} from 'next-auth/client'
 import { stripe } from '../../services/stripe'
 import { query as q } from 'faunadb'
 import { fauna } from '../../services/fauna'
@@ -7,7 +7,7 @@ import { fauna } from '../../services/fauna'
 type User = {
   ref: {
     id: string
-  },
+  }
   data: {
     stripe_customer_id: string
   }
@@ -25,7 +25,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         )
       )
     )
-
+    
     let customerId = user.data.stripe_customer_id
 
     if(!customerId) {
@@ -47,13 +47,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       customerId = stripeCustomer.id
     }
 
-
     const stripeCheckoutSession = await stripe.checkout.sessions.create({
       customer: customerId,
       payment_method_types: ['card'],
       billing_address_collection: 'required',
       line_items: [
-        {price: 'price_1JkdBjLfUcFNO6F92g7Uw2D6', quantity: 1}
+        { price: 'price_1JwUTXLfUcFNO6F9sxu0Lwft', quantity: 1}
       ],
       mode: 'subscription',
       allow_promotion_codes: true,

@@ -1,7 +1,6 @@
 import { query as q } from 'faunadb'
-
-import NextAuth from 'next-auth'
-import Providers from 'next-auth/providers'
+import NextAuth from "next-auth"
+import Providers from "next-auth/providers"
 import { fauna } from '../../../services/fauna'
 
 export default NextAuth({
@@ -10,12 +9,11 @@ export default NextAuth({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
       scope: 'read:user'
-    })
+    }),
   ],
-
   callbacks: {
-    async signIn(user, account, profile) {
-      const {email} = user
+    async signIn(user) {
+      const { email } = user
 
       try {
         await fauna.query(
@@ -30,7 +28,7 @@ export default NextAuth({
             ),
             q.Create(
               q.Collection('users'),
-              { data: { email }}
+              {data: { email }}
             ),
             q.Get(
               q.Match(
@@ -38,7 +36,7 @@ export default NextAuth({
                 q.Casefold(user.email)
               )
             )
-          ),
+          )
         )
   
         return true

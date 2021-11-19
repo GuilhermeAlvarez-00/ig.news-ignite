@@ -1,8 +1,9 @@
 .contentContainer {
-  width: 1120px;
-  height: calc(100vh - 5rem);
-  margin: 5rem auto 0;
+  max-width: 1120px;
+  margin: 0 auto;
   padding: 0 2rem;
+  height: calc(100vh - 5rem);
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -19,8 +20,8 @@
   h1 {
     font-size: 4.5rem;
     line-height: 4.5rem;
-    margin-top: 2.5rem;
     font-weight: 900;
+    margin-top: 2.5rem;
 
     span {
       color: var(--cyan-500);
