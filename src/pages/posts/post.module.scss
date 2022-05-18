@@ -5,8 +5,8 @@
 }
 
 .post {
-  max-width: 720rem;
-  margin: 5rem auto 0; 
+  max-width: 720px;
+  margin: 5rem auto 0;
 
   h1 {
     font-size: 3.5rem;
@@ -27,7 +27,8 @@
   font-size: 1.125rem;
   color: var(--gra-100);
 
-  p, ul {
+  p,
+  ul {
     margin: 1.25rem 0;
   }
 
