@@ -1,5 +1,5 @@
 import { SignInButton } from '../SignInButton';
-import { ActiveLink } from './activeLink';
+import { ActiveLink } from '../ActiveLink';
 
 import styles from './styles.module.scss';
 
