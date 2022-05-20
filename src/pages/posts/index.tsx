@@ -44,7 +44,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const prismic = getPrismicClient();
   const response = await prismic.getAllByType('post', {
     predicates: [predicate.at('document.type', 'post')],
-    accessToken: process.env.PRISMIC_ACCESS_TOKEN,
   });
 
   const posts = response.map((post) => ({

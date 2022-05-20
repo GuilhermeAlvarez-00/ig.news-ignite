@@ -58,8 +58,19 @@ export default function PostPreview({ post }: PostPreviewrops) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const prismic = getPrismicClient();
+  const response = await prismic.getAllByType('post', {
+    predicates: [predicate.at('document.type', 'post')],
+  });
+
+  const paths = response.map((post) => ({
+    params: {
+      slug: post.uid,
+    },
+  }));
+
   return {
-    paths: [],
+    paths,
     fallback: 'blocking',
   };
 };
